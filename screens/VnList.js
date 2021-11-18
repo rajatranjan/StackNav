@@ -64,7 +64,18 @@ const VnList = () => {
               otherParam: "https://www.vimeo.com",
             })
           }
-          title="go to vinDetail Pager"
+          title="Video from DB using RN Video"
+        />
+      </View>
+      <View style={{ flexDirection: "row", marginTop: 20 }}>
+        <Button
+          onPress={() =>
+            navigation.navigate("VideoPage2", {
+              itemId: 86,
+              otherParam: "https://www.vimeo.com",
+            })
+          }
+          title="Video from Vimeo using Iframe"
         />
       </View>
     </View>

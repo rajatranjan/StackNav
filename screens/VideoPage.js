@@ -1,51 +1,51 @@
-import React from "react";
-import { View, Text, StyleSheet, SafeAreaView } from "react-native";
-import Video from "react-native-video";
-import { Vimeo } from "react-native-vimeo-iframe";
+import * as React from "react";
+import { View, StyleSheet, Button } from "react-native";
+import { Video, AVPlaybackStatus } from "expo-av";
 
-const VideoPage = () => {
+export default function App() {
+  const video = React.useRef(null);
+  const [status, setStatus] = React.useState({});
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.mainContainer}>
-        <Vimeo
-          videoId={"76979871"}
-          onReady={() => console.log("Video is ready")}
-          onPlay={() => console.log("Video is playing")}
-          onPlayProgress={(data) => console.log("Video progress data:", data)}
-          onFinish={() => console.log("Video is finished")}
-          loop={false}
-          autoPlay={false}
-          controls={true}
-          speed={false}
-        />
-        <Vimeo
-          videoId={"76979871"}
-          onReady={() => console.log("Video is ready")}
-          onPlay={() => console.log("Video is playing")}
-          onPlayProgress={(data) => console.log("Video progress data:", data)}
-          onFinish={() => console.log("Video is finished")}
-          loop={true}
-          autoPlay={false}
-          controls={false}
-          speed={false}
+    <View style={styles.container}>
+      <Video
+        ref={video}
+        style={styles.video}
+        source={{
+          uri: "https://www.thatmate.com/app/Video_file_example_MP4_480.mp4",
+        }}
+        useNativeControls
+        resizeMode="contain"
+        isLooping
+        onPlaybackStatusUpdate={(status) => setStatus(() => status)}
+      />
+      <View style={styles.buttons}>
+        <Button
+          title={status.isPlaying ? "Pause" : "Play"}
+          onPress={() =>
+            status.isPlaying
+              ? video.current.pauseAsync()
+              : video.current.playAsync()
+          }
         />
       </View>
-    </SafeAreaView>
+    </View>
   );
-};
+}
 
-export default VideoPage;
-
-// import { StyleSheet } from 'react-native'
-
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
+    justifyContent: "center",
+    backgroundColor: "#ecf0f1",
   },
-  mainContainer: {
-    flex: 1,
-    justifyContent: "space-between",
-    paddingHorizontal: 30,
+  video: {
+    alignSelf: "center",
+    width: 320,
+    height: 200,
+  },
+  buttons: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
