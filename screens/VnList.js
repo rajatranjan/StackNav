@@ -56,26 +56,17 @@ const VnList = () => {
           title="New RenJS Visual Novel copy"
         />
       </View>
-      {/* <Button
-        
-        onPress={() =>
-          navigation.navigate("VnPage", {
-            itemId: 86,
-            otherParam: "https://www.vimeo.com",
-          })
-        }
-        title="go to vinDetail Pager"
-      />
-      <Button
-        
-        onPress={() =>
-          navigation.navigate("VnPage", {
-            itemId: 86,
-            otherParam: "https://www.youtube.com",
-          })
-        }
-        title="go to vinDetail Pager"
-      /> */}
+      <View style={{ flexDirection: "row", marginTop: 20 }}>
+        <Button
+          onPress={() =>
+            navigation.navigate("VideoPage", {
+              itemId: 86,
+              otherParam: "https://www.vimeo.com",
+            })
+          }
+          title="go to vinDetail Pager"
+        />
+      </View>
     </View>
   );
 };

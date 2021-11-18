@@ -1,6 +1,7 @@
 import React from "react";
 import VnList from "./screens/VnList";
 import VnPage from "./screens/VnPage";
+import VideoPage from "./screens/VideoPage";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -15,6 +16,7 @@ export default function App() {
       >
         <Stack.Screen name="VnList" component={VnList} />
         <Stack.Screen name="VnPage" component={VnPage} />
+        <Stack.Screen name="VideoPage" component={VideoPage} />
       </Stack.Navigator>
     </NavigationContainer>
   );
